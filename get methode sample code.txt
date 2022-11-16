@@ -1,0 +1,36 @@
+@RestController
+public class AccountController {
+ 
+ @Autowired
+ IAccountService accountService;
+ 
+ @GetMapping("/")
+ public String home (){
+  return "Spring REST Dinesh on Java!!!";
+ }
+ 
+ @GetMapping("/accounts")
+ public List<Account> all (){
+  return accountService.list();
+ }
+
+@Service
+public class AccountService implements IAccountService{
+ 
+ @Autowired
+ AccountRepository accountRepository;
+ 
+ @Service
+public class AccountService implements IAccountService{
+ 
+ @Autowired
+ AccountRepository accountRepository;
+
+ @Override
+ public Account get(Long accountId) {
+  return accountRepository.findOne(accountId);
+} }
+
+public interface AccountRepository extends CrudRepository<Account, Long> {
+
+}
